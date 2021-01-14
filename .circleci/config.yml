@@ -1,22 +1,20 @@
-version: 2.1
-
+version: 2
 jobs:
-  test:
+  build:
     docker:
-      - image: circleci/ruby:2.7.2-stretch-node
-        auth:
+    - image: circleci/ruby:2.7.2-stretch-node
+    auth:
           username: pbhartianviamcom
-          password: anviam#123  # context / project UI env-var reference
-          
-   executor: ruby/default
+          password: anviam#123
     steps:
-      - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
-
+    - checkout
+    - run:
+        name: Which bundler?
+        command: bundle -v
+    - run:
+        command: bundle install --path vendor/bundle
 workflows:
-  test_my_app:
+  version: 2
+  workflow:
     jobs:
-      - test
+    - build
