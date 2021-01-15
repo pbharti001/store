@@ -9,7 +9,9 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
 #       - ruby/install-deps
       - run: 
           name: setup
-          command: | bundle install # This prints "A first hello" to stdout.
+          command: | 
+            bundle install
+           # This prints "A first hello" to stdout.
 #       - run: sleep 25 # a command telling the job to "sleep" for 25 seconds.
   two: # This is our second job.
     docker: # it runs inside a docker image, the same as above.
