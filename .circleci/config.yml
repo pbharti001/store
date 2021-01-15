@@ -10,6 +10,7 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
       - run: 
           name: setup
           command: | 
+            gem install bundler:2.2.4
             bundle install
            # This prints "A first hello" to stdout.
 #       - run: sleep 25 # a command telling the job to "sleep" for 25 seconds.
