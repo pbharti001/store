@@ -4,15 +4,6 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
     docker:
       - image: cimg/ruby:2.7-node 
       - image: circleci/postgres:10
-        environment:
-          POSTGRES_USER: anviam
-          POSTGRES_DB: store_test
-          POSTGRES_HOST_AUTH_METHOD: trust
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      RAILS_ENV: test
     # Steps are a list of commands to run inside the docker container above.
     steps:
       - checkout # this pulls code down from GitHub
