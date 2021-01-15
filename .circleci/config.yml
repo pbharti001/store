@@ -1,8 +1,9 @@
 version: 2
 jobs: # we now have TWO jobs, so that a workflow can coordinate them!
   one: # This is our first job.
-    machine: # it uses the docker executor
-      image: ubuntu-1604-cuda-9.2:201909-23
+    docker:
+      - image: cimg/ruby:2.7-node 
+      - image: circleci/postgres:10
     # Steps are a list of commands to run inside the docker container above.
     steps:
       - checkout # this pulls code down from GitHub
@@ -13,7 +14,6 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
           command: | 
             rvm use 2.7.2 --default
             gem install bundler:2.2.4
-            gem install pg -v '1.2.3'
             bundle install
 #       - run: sleep 25 # a command telling the job to "sleep" for 25 seconds.
   two: # This is our second job.
